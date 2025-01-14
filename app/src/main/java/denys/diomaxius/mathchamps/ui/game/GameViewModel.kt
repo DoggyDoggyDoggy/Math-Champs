@@ -1,5 +1,6 @@
 package denys.diomaxius.mathchamps.ui.game
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,7 +23,7 @@ class GameViewModel : ViewModel() {
         generateEquation()
     }
 
-    fun generateEquation() {
+    private fun generateEquation() {
         _equation.value = equationCreator.generateEquation()
         _equationAnswers.value = equationAnswersCreator.generateAnswers(_equation.value!!)
     }
