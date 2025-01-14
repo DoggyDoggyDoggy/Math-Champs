@@ -1,13 +1,15 @@
 package denys.diomaxius.mathchamps.ui.data
 
+import denys.diomaxius.mathchamps.ui.data.model.Equation
+import denys.diomaxius.mathchamps.ui.data.utils.equationSolver
 import kotlin.random.Random
 
 class EquationCreator {
-    fun equation(): Equation {
+    fun generateEquation(): Equation {
         val a = randomNumber()
         val b = randomNumber()
         val operator = randomOperator()
-        val result = solveEquation(operator, a, b)
+        val result = equationSolver(operator, a, b)
         return Equation(a, b, operator, result)
     }
 
@@ -18,15 +20,5 @@ class EquationCreator {
 
     private fun randomNumber(): Int {
         return Random.nextInt(1, 11)
-    }
-
-    private fun solveEquation(operator: Char, a: Int, b: Int): Int {
-        return when (operator) {
-            '+' -> a + b
-            '-' -> a - b
-            '/' -> a / b
-            '*' -> a * b
-            else -> 0
-        }
     }
 }

@@ -25,6 +25,7 @@ fun Game(
     viewModel: GameViewModel = viewModel()
 ) {
     val equation = viewModel.equation.observeAsState()
+    val equationAnswers = viewModel.equationAnswers.observeAsState()
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -48,20 +49,20 @@ fun Game(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            repeat(4) {
+            equationAnswers.value?.answers?.forEach {answer ->
                 Card(
                     modifier = Modifier
                         .height(75.dp)
                         .weight(1f)
                         .padding(5.dp)
-                        .clickable { viewModel.generateEquation() }
+                        .clickable { viewModel.check(answer) }
                 ) {
                     Box(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "1",
+                            text = answer.toString(),
                             textAlign = TextAlign.Center
                         )
                     }
