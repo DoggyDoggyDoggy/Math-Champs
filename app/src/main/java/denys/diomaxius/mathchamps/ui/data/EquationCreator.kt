@@ -16,8 +16,7 @@ class EquationCreator {
     }
 
     private fun randomOperator(): Char {
-        //val operators = listOf('+', '-', '/', '*')
-        val operators = listOf('/')
+        val operators = listOf('+', '-', '/', '*')
         return operators.random()
     }
 

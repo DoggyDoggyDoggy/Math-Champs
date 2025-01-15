@@ -24,6 +24,7 @@ class EquationAnswersCreator() {
             else -> {}
         }
     }
+
     private fun divideEquation(equation: Equation, equationAnswers: EquationAnswers) {
         equationAnswers.answers[1] = when {
             equation.result > 1 -> equation.result - 1
