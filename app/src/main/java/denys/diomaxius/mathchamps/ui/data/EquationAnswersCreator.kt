@@ -18,9 +18,23 @@ class EquationAnswersCreator() {
     private fun checkEquationOperator(equation: Equation, equationAnswers: EquationAnswers) {
         when (equation.operator) {
             '+' -> sumEquation(equation, equationAnswers)
+            '-' -> extractEquation(equation, equationAnswers)
 
             else -> {}
         }
+    }
+    private fun extractEquation(equation: Equation, equationAnswers: EquationAnswers) {
+        val decreaseResult = (4 downTo 2).find { equation.result - it > 0 } ?: 0
+
+        equationAnswers.answers[1] = equation.result + Random.nextInt(1, 4)
+        if (decreaseResult != 0) {
+            equationAnswers.answers[2] = equation.result - Random.nextInt(1, decreaseResult)
+        } else
+        {
+            equationAnswers.answers[2] = equationAnswers.answers[1] + 1
+        }
+
+        equationAnswers.answers[3] = Random.nextInt(1, 21)
     }
 
     private fun sumEquation(equation: Equation, equationAnswers: EquationAnswers) {
