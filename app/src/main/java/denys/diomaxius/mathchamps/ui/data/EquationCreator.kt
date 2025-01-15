@@ -16,7 +16,7 @@ class EquationCreator {
 
     private fun randomOperator(): Char {
         //val operators = listOf('+', '-', '/', '*')
-        val operators = listOf('+', '-')
+        val operators = listOf('*')
         return operators.random()
     }
 
@@ -24,6 +24,7 @@ class EquationCreator {
         return  when (operator) {
             '+' -> Random.nextInt(1, 11)
             '-' -> Random.nextInt(2, 21)
+            '*' -> Random.nextInt(1, 11)
             else -> 0
         }
     }
@@ -31,6 +32,7 @@ class EquationCreator {
         return when (operator) {
             '+' -> Random.nextInt(1, 11)
             '-' -> Random.nextInt(1, a)
+            '*' -> Random.nextInt(1, 11)
             else -> 0
         }
     }

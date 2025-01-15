@@ -19,18 +19,58 @@ class EquationAnswersCreator() {
         when (equation.operator) {
             '+' -> sumEquation(equation, equationAnswers)
             '-' -> extractEquation(equation, equationAnswers)
+            '*' -> multiplyEquation(equation, equationAnswers)
 
             else -> {}
         }
     }
+
+    private fun multiplyEquation(equation: Equation, equationAnswers: EquationAnswers) {
+
+        if (equation.a != 10 || equation.b != 10) {
+            equationAnswers.answers[1] = when {
+                equation.a != 10 && equation.b != 10 -> {
+                    if (Random.nextInt(0, 2) == 0)
+                        equation.result + equation.a
+                    else
+                        equation.result + equation.b
+                }
+
+                equation.a != 10 -> equation.result + equation.a
+                else -> equation.result + equation.b
+            }
+        } else {
+            equationAnswers.answers[1] = if (Random.nextInt(0, 2) == 0)
+                equation.result - equation.a
+            else
+                equation.result - equation.b
+        }
+
+        equationAnswers.answers[2] = when {
+            equation.a != 1 && equation.b != 1 -> {
+                if (equation.a == equation.b) {
+                    equation.a + equation.b
+                } else {
+                    if (Random.nextInt(0, 2) == 0)
+                        equation.result - equation.a
+                    else
+                        equation.result - equation.b
+                }
+            }
+            else -> 1
+        }
+
+        equationAnswers.answers[3] = Random.nextInt(1, 100)
+    }
+
     private fun extractEquation(equation: Equation, equationAnswers: EquationAnswers) {
         val decreaseResult = (4 downTo 2).find { equation.result - it > 0 } ?: 0
 
         equationAnswers.answers[1] = equation.result + Random.nextInt(1, 4)
+
         if (decreaseResult != 0) {
             equationAnswers.answers[2] = equation.result - Random.nextInt(1, decreaseResult)
-        } else
-        {
+        } else {
             equationAnswers.answers[2] = equationAnswers.answers[1] + 1
         }
 
