@@ -2,6 +2,7 @@ package denys.diomaxius.mathchamps.ui.data
 
 import denys.diomaxius.mathchamps.ui.data.model.Equation
 import denys.diomaxius.mathchamps.ui.data.utils.equationSolver
+import denys.diomaxius.mathchamps.ui.data.utils.findAllDivisors
 import kotlin.random.Random
 
 class EquationCreator {
@@ -16,7 +17,7 @@ class EquationCreator {
 
     private fun randomOperator(): Char {
         //val operators = listOf('+', '-', '/', '*')
-        val operators = listOf('*')
+        val operators = listOf('/')
         return operators.random()
     }
 
@@ -25,6 +26,7 @@ class EquationCreator {
             '+' -> Random.nextInt(1, 11)
             '-' -> Random.nextInt(2, 21)
             '*' -> Random.nextInt(1, 11)
+            '/' -> Random.nextInt(1, 101)
             else -> 0
         }
     }
@@ -33,6 +35,7 @@ class EquationCreator {
             '+' -> Random.nextInt(1, 11)
             '-' -> Random.nextInt(1, a)
             '*' -> Random.nextInt(1, 11)
+            '/' -> findAllDivisors(a).random()
             else -> 0
         }
     }

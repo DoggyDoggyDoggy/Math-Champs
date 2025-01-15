@@ -1,6 +1,5 @@
 package denys.diomaxius.mathchamps.ui.data
 
-import android.util.Log
 import denys.diomaxius.mathchamps.ui.data.model.Equation
 import denys.diomaxius.mathchamps.ui.data.model.EquationAnswers
 import kotlin.random.Random
@@ -20,9 +19,21 @@ class EquationAnswersCreator() {
             '+' -> sumEquation(equation, equationAnswers)
             '-' -> extractEquation(equation, equationAnswers)
             '*' -> multiplyEquation(equation, equationAnswers)
+            '/' -> divideEquation(equation, equationAnswers)
 
             else -> {}
         }
+    }
+    private fun divideEquation(equation: Equation, equationAnswers: EquationAnswers) {
+        equationAnswers.answers[1] = when {
+            equation.result > 1 -> equation.result - 1
+            else -> equation.result + 2
+        }
+        equationAnswers.answers[2] = when {
+            equation.result < 100 -> equation.result + 1
+            else -> equation.result - 2
+        }
+        equationAnswers.answers[3] = Random.nextInt(1, 50)
     }
 
     private fun multiplyEquation(equation: Equation, equationAnswers: EquationAnswers) {
