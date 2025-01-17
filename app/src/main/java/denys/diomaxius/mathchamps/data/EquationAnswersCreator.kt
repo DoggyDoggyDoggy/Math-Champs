@@ -77,9 +77,23 @@ class EquationAnswersCreator(private val difficulty: Difficulty) {
     }
 
     private fun extractEquation(equation: Equation, equationAnswers: EquationAnswers) {
-        val decreaseResult = (4 downTo 2).find { equation.result - it > 0 } ?: 0
+        val rangeSumming = when(difficulty) {
+            Difficulty.Kindergarten -> 11
+            Difficulty.FirstGrade -> 21
+            Difficulty.SecondGrade -> 51
+            Difficulty.ThirdGrade -> 101
+        }
 
-        equationAnswers.answers[1] = equation.result + Random.nextInt(1, 4)
+        val decreaseResult = (4 downTo 2).find { equation.result - it > 0 } ?: 0
+        val randomRange = Random.nextInt(1, 4)
+
+
+        if (equation.result + randomRange < rangeSumming - 1) {
+            equationAnswers.answers[1] = equation.result + randomRange
+        } else {
+            equationAnswers.answers[1] = equation.result - randomRange
+        }
+
 
         if (decreaseResult != 0) {
             equationAnswers.answers[2] = equation.result - Random.nextInt(1, decreaseResult)
@@ -87,14 +101,27 @@ class EquationAnswersCreator(private val difficulty: Difficulty) {
             equationAnswers.answers[2] = equationAnswers.answers[1] + 1
         }
 
-        equationAnswers.answers[3] = Random.nextInt(1, 21)
+        equationAnswers.answers[3] = Random.nextInt(1, rangeSumming)
     }
 
     private fun sumEquation(equation: Equation, equationAnswers: EquationAnswers) {
-        val decreaseResult = (4 downTo 2).find { equation.result - it > 0 } ?: 2
+        val rangeSumming = when(difficulty) {
+            Difficulty.Kindergarten -> 11
+            Difficulty.FirstGrade -> 21
+            Difficulty.SecondGrade -> 51
+            Difficulty.ThirdGrade -> 101
+        }
 
-        equationAnswers.answers[1] = equation.result + Random.nextInt(1, 4)
+        val decreaseResult = (4 downTo 2).find { equation.result - it > 0 } ?: 2
+        val randomRange = Random.nextInt(1, 4)
+
+        if (equation.result + randomRange < rangeSumming - 1) {
+            equationAnswers.answers[1] = equation.result + randomRange
+        } else {
+            equationAnswers.answers[1] = equation.result - randomRange
+        }
+
         equationAnswers.answers[2] = equation.result - Random.nextInt(1, decreaseResult)
-        equationAnswers.answers[3] = Random.nextInt(1, 21)
+        equationAnswers.answers[3] = Random.nextInt(1, rangeSumming)
     }
 }
