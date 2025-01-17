@@ -1,4 +1,4 @@
-package denys.diomaxius.mathchamps.data
+package denys.diomaxius.mathchamps.data.repository
 
 import denys.diomaxius.mathchamps.data.model.Difficulty
 import denys.diomaxius.mathchamps.data.model.Equation

@@ -6,10 +6,10 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import denys.diomaxius.mathchamps.data.model.Difficulty
-import denys.diomaxius.mathchamps.data.EquationAnswersCreator
+import denys.diomaxius.mathchamps.data.repository.EquationAnswersCreator
 import denys.diomaxius.mathchamps.data.model.Equation
 import denys.diomaxius.mathchamps.data.model.EquationAnswers
-import denys.diomaxius.mathchamps.data.EquationCreator
+import denys.diomaxius.mathchamps.data.repository.EquationCreator
 import javax.inject.Inject
 
 @HiltViewModel
@@ -29,6 +29,7 @@ class GameViewModel @Inject constructor(
     private val _equationAnswers = MutableLiveData<EquationAnswers>()
     val equationAnswers: LiveData<EquationAnswers> = _equationAnswers
 
+
     init {
         generateEquation()
     }
@@ -38,9 +39,12 @@ class GameViewModel @Inject constructor(
         _equationAnswers.value = equationAnswersCreator.generateAnswers(_equation.value!!)
     }
 
-    fun check(userAnswer: Int) {
-        if (userAnswer == _equation.value?.result) {
+    fun check(userAnswer: Int): Boolean {
+        return if (userAnswer == _equation.value?.result) {
             generateEquation()
+            true
+        } else {
+            false
         }
     }
 }

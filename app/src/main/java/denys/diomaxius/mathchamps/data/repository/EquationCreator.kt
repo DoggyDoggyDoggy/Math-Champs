@@ -1,6 +1,5 @@
-package denys.diomaxius.mathchamps.data
+package denys.diomaxius.mathchamps.data.repository
 
-import android.util.Log
 import denys.diomaxius.mathchamps.data.model.Difficulty
 import denys.diomaxius.mathchamps.data.model.Equation
 import denys.diomaxius.mathchamps.data.utils.equationSolver
