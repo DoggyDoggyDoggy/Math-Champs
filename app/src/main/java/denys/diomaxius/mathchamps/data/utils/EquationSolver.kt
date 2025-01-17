@@ -1,4 +1,4 @@
-package denys.diomaxius.mathchamps.ui.data.utils
+package denys.diomaxius.mathchamps.data.utils
 
 fun equationSolver(operator: Char, a: Int, b: Int): Int {
     return when (operator) {

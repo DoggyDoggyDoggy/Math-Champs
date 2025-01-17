@@ -1,11 +1,12 @@
-package denys.diomaxius.mathchamps.ui.data
+package denys.diomaxius.mathchamps.data
 
-import denys.diomaxius.mathchamps.ui.data.model.Equation
-import denys.diomaxius.mathchamps.ui.data.utils.equationSolver
-import denys.diomaxius.mathchamps.ui.data.utils.findAllDivisors
+import denys.diomaxius.mathchamps.data.model.Difficulty
+import denys.diomaxius.mathchamps.data.model.Equation
+import denys.diomaxius.mathchamps.data.utils.equationSolver
+import denys.diomaxius.mathchamps.data.utils.findAllDivisors
 import kotlin.random.Random
 
-class EquationCreator {
+class EquationCreator(private val difficulty: Difficulty) {
     fun generateEquation(): Equation {
         val operator = randomOperator()
         val a = randomNumberA(operator)

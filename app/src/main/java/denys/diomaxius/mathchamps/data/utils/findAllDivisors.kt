@@ -1,4 +1,4 @@
-package denys.diomaxius.mathchamps.ui.data.utils
+package denys.diomaxius.mathchamps.data.utils
 
 import kotlin.math.sqrt
 

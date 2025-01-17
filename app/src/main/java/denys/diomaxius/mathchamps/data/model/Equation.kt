@@ -1,4 +1,4 @@
-package denys.diomaxius.mathchamps.ui.data.model
+package denys.diomaxius.mathchamps.data.model
 
 data class Equation(
     val a: Int,

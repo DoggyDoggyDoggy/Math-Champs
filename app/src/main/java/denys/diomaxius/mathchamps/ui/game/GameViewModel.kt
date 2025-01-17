@@ -1,17 +1,27 @@
 package denys.diomaxius.mathchamps.ui.game
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import denys.diomaxius.mathchamps.ui.data.EquationAnswersCreator
-import denys.diomaxius.mathchamps.ui.data.model.Equation
-import denys.diomaxius.mathchamps.ui.data.model.EquationAnswers
-import denys.diomaxius.mathchamps.ui.data.EquationCreator
+import dagger.hilt.android.lifecycle.HiltViewModel
+import denys.diomaxius.mathchamps.data.model.Difficulty
+import denys.diomaxius.mathchamps.data.EquationAnswersCreator
+import denys.diomaxius.mathchamps.data.model.Equation
+import denys.diomaxius.mathchamps.data.model.EquationAnswers
+import denys.diomaxius.mathchamps.data.EquationCreator
+import javax.inject.Inject
 
-class GameViewModel : ViewModel() {
-    private val equationCreator = EquationCreator()
-    private val equationAnswersCreator = EquationAnswersCreator()
+@HiltViewModel
+class GameViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle
+) : ViewModel() {
+    private val difficulty: Difficulty = Difficulty.valueOf(
+        savedStateHandle["difficulty"] ?: Difficulty.Kindergarten.name
+    )
+
+    private val equationCreator = EquationCreator(difficulty)
+    private val equationAnswersCreator = EquationAnswersCreator(difficulty)
 
     private val _equation = MutableLiveData<Equation>()
     val equation: LiveData<Equation> = _equation

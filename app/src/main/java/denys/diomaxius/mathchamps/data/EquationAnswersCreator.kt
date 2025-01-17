@@ -1,10 +1,11 @@
-package denys.diomaxius.mathchamps.ui.data
+package denys.diomaxius.mathchamps.data
 
-import denys.diomaxius.mathchamps.ui.data.model.Equation
-import denys.diomaxius.mathchamps.ui.data.model.EquationAnswers
+import denys.diomaxius.mathchamps.data.model.Difficulty
+import denys.diomaxius.mathchamps.data.model.Equation
+import denys.diomaxius.mathchamps.data.model.EquationAnswers
 import kotlin.random.Random
 
-class EquationAnswersCreator() {
+class EquationAnswersCreator(private val difficulty: Difficulty) {
     fun generateAnswers(equation: Equation): EquationAnswers {
         val equationAnswers = EquationAnswers().apply {
             answers[0] = equation.result
