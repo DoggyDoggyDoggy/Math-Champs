@@ -5,8 +5,8 @@ Math Champs is an Android application designed to help kids aged 5-12 years prac
 ## Screenshots
 Here’s a look at the app:
 
-<img src="https://github.com/user-attachments/assets/d1cfaab6-7699-4eae-972c-557c29f38c3e" width="32%"  height = 625px />
 <img src="https://github.com/user-attachments/assets/dd15a569-cb81-4dfe-a37e-b96923dc6194" width="32%" height = 625px />
+<img src="https://github.com/user-attachments/assets/d1cfaab6-7699-4eae-972c-557c29f38c3e" width="32%"  height = 625px />
 <img src="https://github.com/user-attachments/assets/3efa032b-b014-401d-abe5-420f6977d240" width="32%" height = 625px />
 
 ## Features
